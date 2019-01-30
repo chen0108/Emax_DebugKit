@@ -1,0 +1,968 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02E8A3AAF5B95E633A1DBCBDC2E1C26A /* NSBundle+DebugKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 508FE7A44D4851062186F1679CFB0B18 /* NSBundle+DebugKit.m */; };
+		044781FB1C3FA7EAF334505C452B5587 /* Emax_DebugKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E395165B0E62A83AE404CA65FA36A0A /* Emax_DebugKit-dummy.m */; };
+		12CF49E167389F50305447590BC9243E /* Emax_DebugKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 532DB97C0D208F9561AF257F6719C08D /* Emax_DebugKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A27731BECC312565B270C6F60CBA005 /* EMAppLanguage.h in Headers */ = {isa = PBXBuildFile; fileRef = A3E498EC38FEB67A6E158D5EF93E4238 /* EMAppLanguage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C7885E1C711ED43AEF9A2253B59E74B /* EMDebugKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AFE94188DDFFF4038E09FEA88C436EB /* EMDebugKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D667FECB55BBC4C66F68DE38C450DCC /* EMLogManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AE5483145E5724F711683C7BE3A52A0 /* EMLogManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5226CB9AF2EB84E5615076F43EDA3E46 /* EMLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B40189FF6E25B3FFFE96AED972036093 /* EMLogManager.m */; };
+		5EFBC7ADF3E0738347C457DE32798AAB /* EMFactoryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CC9A196F4D7F955B744E5EBD1D446797 /* EMFactoryManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6679D035BB1D96FEC03CE8B29EB82166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		7496037221D0E102008E55A1 /* EMLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036A21D0E100008E55A1 /* EMLogViewController.m */; };
+		7496037321D0E102008E55A1 /* EMDebugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036B21D0E100008E55A1 /* EMDebugListViewController.m */; };
+		7496037421D0E102008E55A1 /* EMLogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7496036C21D0E101008E55A1 /* EMLogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7496037521D0E102008E55A1 /* EMFactoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036D21D0E101008E55A1 /* EMFactoryViewController.m */; };
+		7496037621D0E102008E55A1 /* EMAppLanViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7496036E21D0E101008E55A1 /* EMAppLanViewController.h */; };
+		7496037721D0E102008E55A1 /* EMAppLanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036F21D0E101008E55A1 /* EMAppLanViewController.m */; };
+		7496037821D0E102008E55A1 /* EMFactoryViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7496037021D0E101008E55A1 /* EMFactoryViewController.h */; };
+		7496037921D0E102008E55A1 /* EMDebugListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7496037121D0E101008E55A1 /* EMDebugListViewController.h */; };
+		7496037D21D0E2FF008E55A1 /* EMDebugKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7496037C21D0E2FF008E55A1 /* EMDebugKit.bundle */; };
+		74A11D8821F9A49D000A3285 /* EMLogSubmitViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 74A11D8621F9A49D000A3285 /* EMLogSubmitViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74A11D8921F9A49D000A3285 /* EMLogSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A11D8721F9A49D000A3285 /* EMLogSubmitViewController.m */; };
+		77F24F883357FF73138AB75F49433626 /* Pods-Emax_DebugKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 115036867A0D141E7C6920AC7FA0C2CE /* Pods-Emax_DebugKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79FF38BD43E7081DF89BC58E4400957F /* EMDebugManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F7C1D359925DA7D9F7EDD33DD1C188 /* EMDebugManager.m */; };
+		8C603A25D6C2E483FBB2197633D8A83A /* Pods-Emax_DebugKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE5A2B4332B46B4AB45F8A1ABEDBECB /* Pods-Emax_DebugKit_Tests-dummy.m */; };
+		944D7A9D7444FD400AC7799C1620F5FB /* EMDebugManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E978D89B988AA984E2789B954429DE /* EMDebugManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95628776B6395B232DE1AFEB6AC1C895 /* EMFactoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D11343C8DFC3DA91C7F78E5939B59D /* EMFactoryManager.m */; };
+		9BE74A1DFD1CCDFAFB2000330B3AD209 /* Pods-Emax_DebugKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E87B0F2189E5534546E16DC4B4260A01 /* Pods-Emax_DebugKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A934A401376973187DAC1C7B305F78CB /* Emax_DebugKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 771B19A56A2EA5F8E7DC47E0A6AAF56E /* Emax_DebugKit.bundle */; };
+		A9771F91D1AB1C3B82CD7DB101322EE8 /* EMAppLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F2934E688CF9556E00FF816DA56DA /* EMAppLanguage.m */; };
+		BB6207D4A6F975461ABD66848319DD9E /* Pods-Emax_DebugKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D12E231C639F6B50862F9F98A73D210D /* Pods-Emax_DebugKit_Example-dummy.m */; };
+		DF658E7B17E60578BE9A1A9D21115B5A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		E72FE76CED5A9051AA1308E799CB21FC /* NSBundle+DebugKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 45649B9CE37D41EAFA9393BC30A1D781 /* NSBundle+DebugKit.h */; };
+		EFFD770EC54A018253444D7843314873 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5C9959C54FF773CA52A3AE6C4D9BB87D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14FAB89B343AC6BC8711B5D9545FC090;
+			remoteInfo = Emax_DebugKit;
+		};
+		7179EF94E661983FA0D295A3A65ED9BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F61470CDD0064C0B2F6AC0CDBECF8DFF;
+			remoteInfo = "Pods-Emax_DebugKit_Example";
+		};
+		A542CF2C46B1FAD57DAC606541E2CE0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6C5A8104FE4EFCFDEEACEEE0D5C8C680;
+			remoteInfo = "Emax_DebugKit-Emax_DebugKit";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		030A00BF4C84A1C0AC116E838E7D5E81 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		042038C4C381B1B0460FF43363BF4723 /* Pods-Emax_DebugKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Emax_DebugKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		05F7C1D359925DA7D9F7EDD33DD1C188 /* EMDebugManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EMDebugManager.m; path = Emax_DebugKit/Classes/EMDebugManager.m; sourceTree = "<group>"; };
+		115036867A0D141E7C6920AC7FA0C2CE /* Pods-Emax_DebugKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Emax_DebugKit_Tests-umbrella.h"; sourceTree = "<group>"; };
+		1B5DE7EF55B9906C864CA3771007DD48 /* Pods-Emax_DebugKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Emax_DebugKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1FCB6E415FDC6D540F50AB9E438F8C41 /* ResourceBundle-Emax_DebugKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Emax_DebugKit-Info.plist"; sourceTree = "<group>"; };
+		27EA1D17749BBA2164E9B381E8452BA0 /* Pods_Emax_DebugKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emax_DebugKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B2C454E88FAFBD67EBAEC0B40F5C082 /* Emax_DebugKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Emax_DebugKit.xcconfig; sourceTree = "<group>"; };
+		3EE5A2B4332B46B4AB45F8A1ABEDBECB /* Pods-Emax_DebugKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Emax_DebugKit_Tests-dummy.m"; sourceTree = "<group>"; };
+		3F1E61A972AFAC7A36DED25B7499ACE5 /* Pods-Emax_DebugKit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Emax_DebugKit_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		4248EC5E67D1935D5E37CF0C727CA877 /* Pods-Emax_DebugKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Emax_DebugKit_Example.modulemap"; sourceTree = "<group>"; };
+		45649B9CE37D41EAFA9393BC30A1D781 /* NSBundle+DebugKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBundle+DebugKit.h"; path = "Emax_DebugKit/Classes/NSBundle+DebugKit.h"; sourceTree = "<group>"; };
+		4E5EE962DE0CAAD496558A7017647055 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4F0D9B4085B646B8F31B6409834AED26 /* Pods-Emax_DebugKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Emax_DebugKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		508FE7A44D4851062186F1679CFB0B18 /* NSBundle+DebugKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+DebugKit.m"; path = "Emax_DebugKit/Classes/NSBundle+DebugKit.m"; sourceTree = "<group>"; };
+		5310BD692498943EA51E84A93A7C83A5 /* Pods-Emax_DebugKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Emax_DebugKit_Example-resources.sh"; sourceTree = "<group>"; };
+		532DB97C0D208F9561AF257F6719C08D /* Emax_DebugKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Emax_DebugKit-umbrella.h"; sourceTree = "<group>"; };
+		558ECE0985D3642565550705C63174BF /* Emax_DebugKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = Emax_DebugKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5C0F2934E688CF9556E00FF816DA56DA /* EMAppLanguage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EMAppLanguage.m; path = Emax_DebugKit/Classes/EMAppLanguage.m; sourceTree = "<group>"; };
+		5DAF9CC8B2184DA3CEEFF8EE6BF5EF2F /* Emax_DebugKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Emax_DebugKit.modulemap; sourceTree = "<group>"; };
+		6634D0BF65073FD9C7BF3984858A34A0 /* Pods-Emax_DebugKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Emax_DebugKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6A55565EE8B23E4AC49E4F15BB569348 /* Emax_DebugKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Emax_DebugKit-prefix.pch"; sourceTree = "<group>"; };
+		6CFF7D64E1F7A03D558DBBE246581132 /* Pods-Emax_DebugKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Emax_DebugKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		7496036A21D0E100008E55A1 /* EMLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMLogViewController.m; path = Emax_DebugKit/Classes/EMLogViewController.m; sourceTree = "<group>"; };
+		7496036B21D0E100008E55A1 /* EMDebugListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMDebugListViewController.m; path = Emax_DebugKit/Classes/EMDebugListViewController.m; sourceTree = "<group>"; };
+		7496036C21D0E101008E55A1 /* EMLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMLogViewController.h; path = Emax_DebugKit/Classes/EMLogViewController.h; sourceTree = "<group>"; };
+		7496036D21D0E101008E55A1 /* EMFactoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFactoryViewController.m; path = Emax_DebugKit/Classes/EMFactoryViewController.m; sourceTree = "<group>"; };
+		7496036E21D0E101008E55A1 /* EMAppLanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMAppLanViewController.h; path = Emax_DebugKit/Classes/EMAppLanViewController.h; sourceTree = "<group>"; };
+		7496036F21D0E101008E55A1 /* EMAppLanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMAppLanViewController.m; path = Emax_DebugKit/Classes/EMAppLanViewController.m; sourceTree = "<group>"; };
+		7496037021D0E101008E55A1 /* EMFactoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMFactoryViewController.h; path = Emax_DebugKit/Classes/EMFactoryViewController.h; sourceTree = "<group>"; };
+		7496037121D0E101008E55A1 /* EMDebugListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMDebugListViewController.h; path = Emax_DebugKit/Classes/EMDebugListViewController.h; sourceTree = "<group>"; };
+		7496037C21D0E2FF008E55A1 /* EMDebugKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = EMDebugKit.bundle; path = Emax_DebugKit/EMDebugKit.bundle; sourceTree = "<group>"; };
+		74A11D8621F9A49D000A3285 /* EMLogSubmitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EMLogSubmitViewController.h; path = Emax_DebugKit/Classes/EMLogSubmitViewController.h; sourceTree = "<group>"; };
+		74A11D8721F9A49D000A3285 /* EMLogSubmitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = EMLogSubmitViewController.m; path = Emax_DebugKit/Classes/EMLogSubmitViewController.m; sourceTree = "<group>"; };
+		7663C1F1A090DD84476B497A799C5377 /* Pods-Emax_DebugKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Emax_DebugKit_Example-frameworks.sh"; sourceTree = "<group>"; };
+		771B19A56A2EA5F8E7DC47E0A6AAF56E /* Emax_DebugKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Emax_DebugKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		783614F53B041787907B59E8F8234E8B /* Pods-Emax_DebugKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Emax_DebugKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		7AE5483145E5724F711683C7BE3A52A0 /* EMLogManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMLogManager.h; path = Emax_DebugKit/Classes/EMLogManager.h; sourceTree = "<group>"; };
+		7E7130A5588907A7BD19619705C271D0 /* Pods-Emax_DebugKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Emax_DebugKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8342D6B09924EC00E84D65AE83D2BF46 /* Pods-Emax_DebugKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Emax_DebugKit_Tests.modulemap"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9AFE94188DDFFF4038E09FEA88C436EB /* EMDebugKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMDebugKit.h; path = Emax_DebugKit/Classes/EMDebugKit.h; sourceTree = "<group>"; };
+		9E352D70177DE02DD851B32E16C83FF1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E395165B0E62A83AE404CA65FA36A0A /* Emax_DebugKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Emax_DebugKit-dummy.m"; sourceTree = "<group>"; };
+		A0745689E740EE93EF9CF4FBA24B2142 /* Pods-Emax_DebugKit_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Emax_DebugKit_Tests-resources.sh"; sourceTree = "<group>"; };
+		A3E498EC38FEB67A6E158D5EF93E4238 /* EMAppLanguage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMAppLanguage.h; path = Emax_DebugKit/Classes/EMAppLanguage.h; sourceTree = "<group>"; };
+		A8CB885F8CAB0A1074DFF1B2D0045AFA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC2FC9771745B5EA114702217E2EF998 /* Pods-Emax_DebugKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Emax_DebugKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B40189FF6E25B3FFFE96AED972036093 /* EMLogManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EMLogManager.m; path = Emax_DebugKit/Classes/EMLogManager.m; sourceTree = "<group>"; };
+		B6D11343C8DFC3DA91C7F78E5939B59D /* EMFactoryManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = EMFactoryManager.m; path = Emax_DebugKit/Classes/EMFactoryManager.m; sourceTree = "<group>"; };
+		C6E9641B512FF1C31AD923790AA808A7 /* Pods_Emax_DebugKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Emax_DebugKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBC53677D88556E79EF3513DC5CFEA36 /* Emax_DebugKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Emax_DebugKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC9A196F4D7F955B744E5EBD1D446797 /* EMFactoryManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMFactoryManager.h; path = Emax_DebugKit/Classes/EMFactoryManager.h; sourceTree = "<group>"; };
+		D12E231C639F6B50862F9F98A73D210D /* Pods-Emax_DebugKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Emax_DebugKit_Example-dummy.m"; sourceTree = "<group>"; };
+		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		E87B0F2189E5534546E16DC4B4260A01 /* Pods-Emax_DebugKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Emax_DebugKit_Example-umbrella.h"; sourceTree = "<group>"; };
+		F3E978D89B988AA984E2789B954429DE /* EMDebugManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMDebugManager.h; path = Emax_DebugKit/Classes/EMDebugManager.h; sourceTree = "<group>"; };
+		F68D49A361244F29ADEF23EC8A12C9C3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		399A4AE908D78B93CBA68BB0EF570ABB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6679D035BB1D96FEC03CE8B29EB82166 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B0E602B65A4ED782356AF2F988A1034 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF658E7B17E60578BE9A1A9D21115B5A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78D7676A421F7BF5127E9AD85493B95F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E2B08CDE20E2C47F2DDACD898010861 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFD770EC54A018253444D7843314873 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0EB268AAB4468B87286F6548EF4B9C77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1B211DD52D81BCD7FE15A9168EC82E76 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6158AC0AB8EB8837FDC66C0BB86492FA /* Pods-Emax_DebugKit_Example */,
+				B6D7CA114547F2F5DD49F3E221E53247 /* Pods-Emax_DebugKit_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		35B5BB55AC10DA1955B81B90E6DEBB8F /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95B7221DDB03E22D4234AC0385EDDA99 /* Emax_DebugKit */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		44D5347904CF754D6785B84253F2574A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		6158AC0AB8EB8837FDC66C0BB86492FA /* Pods-Emax_DebugKit_Example */ = {
+			isa = PBXGroup;
+			children = (
+				9E352D70177DE02DD851B32E16C83FF1 /* Info.plist */,
+				4248EC5E67D1935D5E37CF0C727CA877 /* Pods-Emax_DebugKit_Example.modulemap */,
+				7E7130A5588907A7BD19619705C271D0 /* Pods-Emax_DebugKit_Example-acknowledgements.markdown */,
+				6CFF7D64E1F7A03D558DBBE246581132 /* Pods-Emax_DebugKit_Example-acknowledgements.plist */,
+				D12E231C639F6B50862F9F98A73D210D /* Pods-Emax_DebugKit_Example-dummy.m */,
+				7663C1F1A090DD84476B497A799C5377 /* Pods-Emax_DebugKit_Example-frameworks.sh */,
+				5310BD692498943EA51E84A93A7C83A5 /* Pods-Emax_DebugKit_Example-resources.sh */,
+				E87B0F2189E5534546E16DC4B4260A01 /* Pods-Emax_DebugKit_Example-umbrella.h */,
+				042038C4C381B1B0460FF43363BF4723 /* Pods-Emax_DebugKit_Example.debug.xcconfig */,
+				AC2FC9771745B5EA114702217E2EF998 /* Pods-Emax_DebugKit_Example.release.xcconfig */,
+			);
+			name = "Pods-Emax_DebugKit_Example";
+			path = "Target Support Files/Pods-Emax_DebugKit_Example";
+			sourceTree = "<group>";
+		};
+		6841958E646F557BDB32BAB7BD11B96B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5DAF9CC8B2184DA3CEEFF8EE6BF5EF2F /* Emax_DebugKit.modulemap */,
+				2B2C454E88FAFBD67EBAEC0B40F5C082 /* Emax_DebugKit.xcconfig */,
+				9E395165B0E62A83AE404CA65FA36A0A /* Emax_DebugKit-dummy.m */,
+				6A55565EE8B23E4AC49E4F15BB569348 /* Emax_DebugKit-prefix.pch */,
+				532DB97C0D208F9561AF257F6719C08D /* Emax_DebugKit-umbrella.h */,
+				030A00BF4C84A1C0AC116E838E7D5E81 /* Info.plist */,
+				1FCB6E415FDC6D540F50AB9E438F8C41 /* ResourceBundle-Emax_DebugKit-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Emax_DebugKit";
+			sourceTree = "<group>";
+		};
+		6ECA22D7CB408C20F80BA043728A454A /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				558ECE0985D3642565550705C63174BF /* Emax_DebugKit.podspec */,
+				F68D49A361244F29ADEF23EC8A12C9C3 /* LICENSE */,
+				4E5EE962DE0CAAD496558A7017647055 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				35B5BB55AC10DA1955B81B90E6DEBB8F /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				8B3D7D4C63CFAF5D006AB8A6ED0C06C3 /* Products */,
+				1B211DD52D81BCD7FE15A9168EC82E76 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8B3D7D4C63CFAF5D006AB8A6ED0C06C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				771B19A56A2EA5F8E7DC47E0A6AAF56E /* Emax_DebugKit.bundle */,
+				CBC53677D88556E79EF3513DC5CFEA36 /* Emax_DebugKit.framework */,
+				C6E9641B512FF1C31AD923790AA808A7 /* Pods_Emax_DebugKit_Example.framework */,
+				27EA1D17749BBA2164E9B381E8452BA0 /* Pods_Emax_DebugKit_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95B7221DDB03E22D4234AC0385EDDA99 /* Emax_DebugKit */ = {
+			isa = PBXGroup;
+			children = (
+				9AFE94188DDFFF4038E09FEA88C436EB /* EMDebugKit.h */,
+				F3E978D89B988AA984E2789B954429DE /* EMDebugManager.h */,
+				05F7C1D359925DA7D9F7EDD33DD1C188 /* EMDebugManager.m */,
+				7496037121D0E101008E55A1 /* EMDebugListViewController.h */,
+				7496036B21D0E100008E55A1 /* EMDebugListViewController.m */,
+				7496037C21D0E2FF008E55A1 /* EMDebugKit.bundle */,
+				A3E498EC38FEB67A6E158D5EF93E4238 /* EMAppLanguage.h */,
+				5C0F2934E688CF9556E00FF816DA56DA /* EMAppLanguage.m */,
+				7496036E21D0E101008E55A1 /* EMAppLanViewController.h */,
+				7496036F21D0E101008E55A1 /* EMAppLanViewController.m */,
+				CC9A196F4D7F955B744E5EBD1D446797 /* EMFactoryManager.h */,
+				B6D11343C8DFC3DA91C7F78E5939B59D /* EMFactoryManager.m */,
+				7496037021D0E101008E55A1 /* EMFactoryViewController.h */,
+				7496036D21D0E101008E55A1 /* EMFactoryViewController.m */,
+				7AE5483145E5724F711683C7BE3A52A0 /* EMLogManager.h */,
+				B40189FF6E25B3FFFE96AED972036093 /* EMLogManager.m */,
+				7496036C21D0E101008E55A1 /* EMLogViewController.h */,
+				7496036A21D0E100008E55A1 /* EMLogViewController.m */,
+				74A11D8621F9A49D000A3285 /* EMLogSubmitViewController.h */,
+				74A11D8721F9A49D000A3285 /* EMLogSubmitViewController.m */,
+				45649B9CE37D41EAFA9393BC30A1D781 /* NSBundle+DebugKit.h */,
+				508FE7A44D4851062186F1679CFB0B18 /* NSBundle+DebugKit.m */,
+				6ECA22D7CB408C20F80BA043728A454A /* Pod */,
+				0EB268AAB4468B87286F6548EF4B9C77 /* Resources */,
+				6841958E646F557BDB32BAB7BD11B96B /* Support Files */,
+			);
+			name = Emax_DebugKit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		B6D7CA114547F2F5DD49F3E221E53247 /* Pods-Emax_DebugKit_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A8CB885F8CAB0A1074DFF1B2D0045AFA /* Info.plist */,
+				8342D6B09924EC00E84D65AE83D2BF46 /* Pods-Emax_DebugKit_Tests.modulemap */,
+				4F0D9B4085B646B8F31B6409834AED26 /* Pods-Emax_DebugKit_Tests-acknowledgements.markdown */,
+				6634D0BF65073FD9C7BF3984858A34A0 /* Pods-Emax_DebugKit_Tests-acknowledgements.plist */,
+				3EE5A2B4332B46B4AB45F8A1ABEDBECB /* Pods-Emax_DebugKit_Tests-dummy.m */,
+				3F1E61A972AFAC7A36DED25B7499ACE5 /* Pods-Emax_DebugKit_Tests-frameworks.sh */,
+				A0745689E740EE93EF9CF4FBA24B2142 /* Pods-Emax_DebugKit_Tests-resources.sh */,
+				115036867A0D141E7C6920AC7FA0C2CE /* Pods-Emax_DebugKit_Tests-umbrella.h */,
+				1B5DE7EF55B9906C864CA3771007DD48 /* Pods-Emax_DebugKit_Tests.debug.xcconfig */,
+				783614F53B041787907B59E8F8234E8B /* Pods-Emax_DebugKit_Tests.release.xcconfig */,
+			);
+			name = "Pods-Emax_DebugKit_Tests";
+			path = "Target Support Files/Pods-Emax_DebugKit_Tests";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44D5347904CF754D6785B84253F2574A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7CC5D57523C95881DA5A542DAEBC5362 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A27731BECC312565B270C6F60CBA005 /* EMAppLanguage.h in Headers */,
+				12CF49E167389F50305447590BC9243E /* Emax_DebugKit-umbrella.h in Headers */,
+				944D7A9D7444FD400AC7799C1620F5FB /* EMDebugManager.h in Headers */,
+				4C7885E1C711ED43AEF9A2253B59E74B /* EMDebugKit.h in Headers */,
+				5EFBC7ADF3E0738347C457DE32798AAB /* EMFactoryManager.h in Headers */,
+				74A11D8821F9A49D000A3285 /* EMLogSubmitViewController.h in Headers */,
+				4D667FECB55BBC4C66F68DE38C450DCC /* EMLogManager.h in Headers */,
+				7496037421D0E102008E55A1 /* EMLogViewController.h in Headers */,
+				7496037921D0E102008E55A1 /* EMDebugListViewController.h in Headers */,
+				7496037621D0E102008E55A1 /* EMAppLanViewController.h in Headers */,
+				E72FE76CED5A9051AA1308E799CB21FC /* NSBundle+DebugKit.h in Headers */,
+				7496037821D0E102008E55A1 /* EMFactoryViewController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8A08B8713A22E35D3DF2A07B4EC9860 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BE74A1DFD1CCDFAFB2000330B3AD209 /* Pods-Emax_DebugKit_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3E9C947590233E53314958183E2558C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77F24F883357FF73138AB75F49433626 /* Pods-Emax_DebugKit_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		14FAB89B343AC6BC8711B5D9545FC090 /* Emax_DebugKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD73E1539627B60C0478A88BF1C5EDC0 /* Build configuration list for PBXNativeTarget "Emax_DebugKit" */;
+			buildPhases = (
+				7CC5D57523C95881DA5A542DAEBC5362 /* Headers */,
+				1788A238BE1F2FEF9BF0F8AC01CD610F /* Sources */,
+				7E2B08CDE20E2C47F2DDACD898010861 /* Frameworks */,
+				8F272E8B86F78C778970455B94DB3956 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29E2987A762F351007088BB472FA6D15 /* PBXTargetDependency */,
+			);
+			name = Emax_DebugKit;
+			productName = Emax_DebugKit;
+			productReference = CBC53677D88556E79EF3513DC5CFEA36 /* Emax_DebugKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6C5A8104FE4EFCFDEEACEEE0D5C8C680 /* Emax_DebugKit-Emax_DebugKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 228048DA5881C7E1DBD00F4FE197002B /* Build configuration list for PBXNativeTarget "Emax_DebugKit-Emax_DebugKit" */;
+			buildPhases = (
+				C348656477942E1E4B8E811B4B16961B /* Sources */,
+				78D7676A421F7BF5127E9AD85493B95F /* Frameworks */,
+				773F2A18560B9C34BEEFF871D55145AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Emax_DebugKit-Emax_DebugKit";
+			productName = "Emax_DebugKit-Emax_DebugKit";
+			productReference = 771B19A56A2EA5F8E7DC47E0A6AAF56E /* Emax_DebugKit.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		9F19A7466279C96875E49F1B97D9361C /* Pods-Emax_DebugKit_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A23EA5390DC3EB57696E8FD54B7BC3D7 /* Build configuration list for PBXNativeTarget "Pods-Emax_DebugKit_Tests" */;
+			buildPhases = (
+				E3E9C947590233E53314958183E2558C /* Headers */,
+				96B6CFED25B94E3EA7A50C7603F34EF0 /* Sources */,
+				5B0E602B65A4ED782356AF2F988A1034 /* Frameworks */,
+				8CCEAAFC93A351835F1E7BE7BEE750D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97CB347ECF7339782524816F8B13CD73 /* PBXTargetDependency */,
+			);
+			name = "Pods-Emax_DebugKit_Tests";
+			productName = "Pods-Emax_DebugKit_Tests";
+			productReference = 27EA1D17749BBA2164E9B381E8452BA0 /* Pods_Emax_DebugKit_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F61470CDD0064C0B2F6AC0CDBECF8DFF /* Pods-Emax_DebugKit_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA60771872548E7899893861AAF3853 /* Build configuration list for PBXNativeTarget "Pods-Emax_DebugKit_Example" */;
+			buildPhases = (
+				B8A08B8713A22E35D3DF2A07B4EC9860 /* Headers */,
+				80111A656B817ECA4443784F6DF94BDD /* Sources */,
+				399A4AE908D78B93CBA68BB0EF570ABB /* Frameworks */,
+				C6B7945C4CA06856754148A8BBAABD58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05CC8867BF5EF636D2F5C4573C4B7582 /* PBXTargetDependency */,
+			);
+			name = "Pods-Emax_DebugKit_Example";
+			productName = "Pods-Emax_DebugKit_Example";
+			productReference = C6E9641B512FF1C31AD923790AA808A7 /* Pods_Emax_DebugKit_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 8B3D7D4C63CFAF5D006AB8A6ED0C06C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14FAB89B343AC6BC8711B5D9545FC090 /* Emax_DebugKit */,
+				6C5A8104FE4EFCFDEEACEEE0D5C8C680 /* Emax_DebugKit-Emax_DebugKit */,
+				F61470CDD0064C0B2F6AC0CDBECF8DFF /* Pods-Emax_DebugKit_Example */,
+				9F19A7466279C96875E49F1B97D9361C /* Pods-Emax_DebugKit_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		773F2A18560B9C34BEEFF871D55145AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CCEAAFC93A351835F1E7BE7BEE750D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8F272E8B86F78C778970455B94DB3956 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7496037D21D0E2FF008E55A1 /* EMDebugKit.bundle in Resources */,
+				A934A401376973187DAC1C7B305F78CB /* Emax_DebugKit.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C6B7945C4CA06856754148A8BBAABD58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1788A238BE1F2FEF9BF0F8AC01CD610F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9771F91D1AB1C3B82CD7DB101322EE8 /* EMAppLanguage.m in Sources */,
+				74A11D8921F9A49D000A3285 /* EMLogSubmitViewController.m in Sources */,
+				044781FB1C3FA7EAF334505C452B5587 /* Emax_DebugKit-dummy.m in Sources */,
+				7496037721D0E102008E55A1 /* EMAppLanViewController.m in Sources */,
+				79FF38BD43E7081DF89BC58E4400957F /* EMDebugManager.m in Sources */,
+				7496037521D0E102008E55A1 /* EMFactoryViewController.m in Sources */,
+				7496037321D0E102008E55A1 /* EMDebugListViewController.m in Sources */,
+				95628776B6395B232DE1AFEB6AC1C895 /* EMFactoryManager.m in Sources */,
+				5226CB9AF2EB84E5615076F43EDA3E46 /* EMLogManager.m in Sources */,
+				02E8A3AAF5B95E633A1DBCBDC2E1C26A /* NSBundle+DebugKit.m in Sources */,
+				7496037221D0E102008E55A1 /* EMLogViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80111A656B817ECA4443784F6DF94BDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB6207D4A6F975461ABD66848319DD9E /* Pods-Emax_DebugKit_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96B6CFED25B94E3EA7A50C7603F34EF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C603A25D6C2E483FBB2197633D8A83A /* Pods-Emax_DebugKit_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C348656477942E1E4B8E811B4B16961B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05CC8867BF5EF636D2F5C4573C4B7582 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Emax_DebugKit;
+			target = 14FAB89B343AC6BC8711B5D9545FC090 /* Emax_DebugKit */;
+			targetProxy = 5C9959C54FF773CA52A3AE6C4D9BB87D /* PBXContainerItemProxy */;
+		};
+		29E2987A762F351007088BB472FA6D15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Emax_DebugKit-Emax_DebugKit";
+			target = 6C5A8104FE4EFCFDEEACEEE0D5C8C680 /* Emax_DebugKit-Emax_DebugKit */;
+			targetProxy = A542CF2C46B1FAD57DAC606541E2CE0C /* PBXContainerItemProxy */;
+		};
+		97CB347ECF7339782524816F8B13CD73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Emax_DebugKit_Example";
+			target = F61470CDD0064C0B2F6AC0CDBECF8DFF /* Pods-Emax_DebugKit_Example */;
+			targetProxy = 7179EF94E661983FA0D295A3A65ED9BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		47AA103F478E5CB6BCD8482EAC2ACD1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2C454E88FAFBD67EBAEC0B40F5C082 /* Emax_DebugKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Emax_DebugKit/Emax_DebugKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Emax_DebugKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Emax_DebugKit/Emax_DebugKit.modulemap";
+				PRODUCT_MODULE_NAME = Emax_DebugKit;
+				PRODUCT_NAME = Emax_DebugKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		85B95B1234E227C814CCC2C7902D0916 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		9B6D58EBFE93DA60569D10FA59EABBFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B5DE7EF55B9906C864CA3771007DD48 /* Pods-Emax_DebugKit_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Emax_DebugKit_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Emax_DebugKit_Tests/Pods-Emax_DebugKit_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A73625DEBD810B78234FA1958C191C8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		AED1D18466A7AFA40069931328F9E4DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC2FC9771745B5EA114702217E2EF998 /* Pods-Emax_DebugKit_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Emax_DebugKit_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Emax_DebugKit_Example/Pods-Emax_DebugKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C29AB9582AF56C9E71E7A53051E6BBF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2C454E88FAFBD67EBAEC0B40F5C082 /* Emax_DebugKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Emax_DebugKit";
+				INFOPLIST_FILE = "Target Support Files/Emax_DebugKit/ResourceBundle-Emax_DebugKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Emax_DebugKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		C6104DA16D7EB266B361AB67414D3BF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 042038C4C381B1B0460FF43363BF4723 /* Pods-Emax_DebugKit_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Emax_DebugKit_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Emax_DebugKit_Example/Pods-Emax_DebugKit_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E5DCAD1F1D2622FB2EA2B3916FF8AC28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2C454E88FAFBD67EBAEC0B40F5C082 /* Emax_DebugKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Emax_DebugKit/Emax_DebugKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Emax_DebugKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Emax_DebugKit/Emax_DebugKit.modulemap";
+				PRODUCT_MODULE_NAME = Emax_DebugKit;
+				PRODUCT_NAME = Emax_DebugKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F5EACFFEDC9C63C5005508E34344F4EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 783614F53B041787907B59E8F8234E8B /* Pods-Emax_DebugKit_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Emax_DebugKit_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Emax_DebugKit_Tests/Pods-Emax_DebugKit_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FE0BBB732E6B0557745D23E8C6E70861 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B2C454E88FAFBD67EBAEC0B40F5C082 /* Emax_DebugKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Emax_DebugKit";
+				INFOPLIST_FILE = "Target Support Files/Emax_DebugKit/ResourceBundle-Emax_DebugKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Emax_DebugKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		228048DA5881C7E1DBD00F4FE197002B /* Build configuration list for PBXNativeTarget "Emax_DebugKit-Emax_DebugKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE0BBB732E6B0557745D23E8C6E70861 /* Debug */,
+				C29AB9582AF56C9E71E7A53051E6BBF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A73625DEBD810B78234FA1958C191C8C /* Debug */,
+				85B95B1234E227C814CCC2C7902D0916 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FA60771872548E7899893861AAF3853 /* Build configuration list for PBXNativeTarget "Pods-Emax_DebugKit_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6104DA16D7EB266B361AB67414D3BF7 /* Debug */,
+				AED1D18466A7AFA40069931328F9E4DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A23EA5390DC3EB57696E8FD54B7BC3D7 /* Build configuration list for PBXNativeTarget "Pods-Emax_DebugKit_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B6D58EBFE93DA60569D10FA59EABBFF /* Debug */,
+				F5EACFFEDC9C63C5005508E34344F4EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD73E1539627B60C0478A88BF1C5EDC0 /* Build configuration list for PBXNativeTarget "Emax_DebugKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47AA103F478E5CB6BCD8482EAC2ACD1C /* Debug */,
+				E5DCAD1F1D2622FB2EA2B3916FF8AC28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

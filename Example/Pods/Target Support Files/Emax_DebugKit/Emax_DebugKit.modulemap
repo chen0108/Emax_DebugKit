@@ -1,0 +1,6 @@
+framework module Emax_DebugKit {
+  umbrella header "Emax_DebugKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

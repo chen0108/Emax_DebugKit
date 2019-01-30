@@ -1,0 +1,16 @@
+PODS:
+  - Emax_DebugKit (0.1.0)
+
+DEPENDENCIES:
+  - Emax_DebugKit (from `../`)
+
+EXTERNAL SOURCES:
+  Emax_DebugKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Emax_DebugKit: 0256279a541674aa91668049c747b2582ff1a908
+
+PODFILE CHECKSUM: 1427f2774537371b5679b9f310abe62df7a8d240
+
+COCOAPODS: 1.5.3

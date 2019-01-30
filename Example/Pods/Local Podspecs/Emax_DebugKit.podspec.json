@@ -1,0 +1,27 @@
+{
+  "name": "Emax_DebugKit",
+  "version": "0.1.0",
+  "summary": "A debug tool set for Emax company.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/chen0108_mbp/Emax_DebugKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "chen0108_mbp": "375735289@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/chen0108/Emax_DebugKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Emax_DebugKit/Classes/**/*",
+  "resource_bundles": {
+    "Emax_DebugKit": [
+      "Emax_DebugKit/Assets/*.png"
+    ]
+  }
+}

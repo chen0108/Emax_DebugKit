@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'Emax_DebugKit_Example' do
+  pod 'Emax_DebugKit', :path => '../'
+
+  target 'Emax_DebugKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
