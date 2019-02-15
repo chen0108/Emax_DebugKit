@@ -73,7 +73,6 @@ static const char kBundleKey = 0;
     }
     NSBundle *bundle = [NSBundle bundleWithPath:path];
     objc_setAssociatedObject([NSBundle mainBundle], &kBundleKey, bundle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAppLanguageDidChangeNotification object:nil];
 }
 
 + (void)load {
@@ -125,6 +124,12 @@ static const char kBundleKey = 0;
     return _customEnable.boolValue;
 }
 
+
+static languageChange _handler;
++ (void)languageChangedHander:(void (^)(void))handler{
+    _handler = handler;
+}
+
 /// 切换自定义语言. (前提是setCustomLanguageEnable设置了YES才有效)
 + (void)setCustomLanguage:(NSString *)lan{
     if (lan == nil || lan.length == 0) {
@@ -135,6 +140,10 @@ static const char kBundleKey = 0;
     [[NSUserDefaults standardUserDefaults] synchronize];
     //重新初始化bundle
     [NSBundle setup];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAppLanguageDidChangeNotification object:nil];
+    if (_handler) {
+        _handler();
+    }
 }
 
 //当前自定义语言

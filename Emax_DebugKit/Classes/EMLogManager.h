@@ -62,13 +62,6 @@ typedef NS_ENUM(NSUInteger, RedirectLogState) {
                   bucketName:(NSString *)bucketName;
 
 
-
-/**
- *    @brief    查询是否配置了云服务
- */
-+ (BOOL)haveConfixCloud;
-
-
 /**
  *    @brief    生成一个tap手势,手势已经实现了reportLog action
  */

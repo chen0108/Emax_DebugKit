@@ -34,7 +34,7 @@ FOUNDATION_EXPORT NSString *const kAppFactoryModeDidChanged;
 
 
 /**
- *  模式变化时的回掉
+ *  模式变化时的回调
  *
  */
 + (void)modeChangedHander:(void(^)(void))handler;

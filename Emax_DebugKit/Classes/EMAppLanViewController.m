@@ -44,20 +44,10 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if ([EMAppLanguage customLanguageEnable] == NO) {
-        return 1;
-    }
     return self.listLan.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([EMAppLanguage customLanguageEnable] == NO) {
-        UITableViewCell *tipCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"tipcell"];
-        tipCell.accessoryType = UITableViewCellAccessoryNone;
-        tipCell.separatorInset = UIEdgeInsetsZero;
-        tipCell.textLabel.text = @"app未启用多语言切换功能";
-        return tipCell;
-    }
     static NSString *ID = @"defaultCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
@@ -99,10 +89,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([EMAppLanguage customLanguageEnable] == NO) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        return;
-    }
     NSString *lan;
     if (indexPath.row == 0) {
         lan = nil;
@@ -113,13 +99,12 @@
         return;
     }
     __weak  typeof(self)this = self;
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"切换语言将重新启动app" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确定要切换语言?" message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [this.navigationController popViewControllerAnimated:YES];
     }]];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [EMAppLanguage setCustomLanguage:lan];
-        [EMDebugManager exitApplication];
     }]];
     [self presentViewController:alertVC animated:YES completion:nil];
 }

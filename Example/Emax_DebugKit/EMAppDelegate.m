@@ -27,14 +27,14 @@
     
     [EMLogManager setRedirectLogState:RedirectLogToFile];
     
-    [EMAppLanguage setCustomLanguageEnable:NO];
-//    [EMAppLanguage setSupportLanguageDictionary:@{@"zh-":@"zh-Hans",
-//                                                  @"de-":@"de",
-//                                                  @"ja-":@"ja",
-//                                                  @"ru-":@"ru-RU",
-//                                                  @"fr-":@"fr",
-//                                                  @"el-":@"el-GR",
-//                                                  }];
+    [EMAppLanguage setCustomLanguageEnable:YES];
+    [EMAppLanguage setSupportLanguageDictionary:@{@"zh-":@"zh-Hans",
+                                                  @"de-":@"de",
+                                                  @"ja-":@"ja",
+                                                  @"ru-":@"ru-RU",
+                                                  @"fr-":@"fr",
+                                                  @"el-":@"el-GR",
+                                                  }];
 
     [EMFactoryManager setDefaulFactoryMode:YES];
     [EMFactoryManager modeChangedHander:^{

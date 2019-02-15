@@ -32,8 +32,8 @@
 }
 - (IBAction)nextPage:(id)sender {
     NSLog(@"%@",@"进入下一界面");
-//    EMViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"EMViewController"];
-//    [self.navigationController pushViewController:vc animated:YES];
+    NSArray *arr = @[@1,@1];
+    NSString *r = arr[5];
 }
 
 @end

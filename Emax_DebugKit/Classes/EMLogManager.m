@@ -102,6 +102,7 @@ static NSUInteger _state;
             [self redirectToText];
             break;
         case RedirectLogToFile:
+            NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
             [[NSNotificationCenter defaultCenter] removeObserver:self];
             [self redirectToFile];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redirectToFile) name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -112,6 +113,23 @@ static NSUInteger _state;
 + (RedirectLogState)currentLogState{
     return _state;
 }
+/**
+ *  获取异常崩溃信息
+ */
+void UncaughtExceptionHandler(NSException *exception) {
+    NSArray *callStack = [exception callStackSymbols];
+    NSString *reason = [exception reason];
+    NSString *name = [exception name];
+    NSString *content = [NSString stringWithFormat:@"\n========  异常错误报告  ========\n位置:%s\nname:%@\nreason:%@\ncallStackSymbols:\n%@\n", __FUNCTION__,name,reason,[callStack componentsJoinedByString:@"\n"]];
+    NSLog(@"\n%@\n",content);
+    //把异常崩溃信息发送至开发者
+    __block dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+    [EMLogManager reportLogResult:^(BOOL isSuccess) {
+        dispatch_semaphore_signal(sem);
+    }];
+    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+}
+
 
 /* ============================================================ */
 #pragma mark - 重定向日志到self
@@ -222,7 +240,8 @@ static NSString *_regionName= nil;
 ///上报日志
 + (void)reportLogResult:(void (^)(BOOL))handle{
     if (_bucketName == nil || _regionName == nil) {
-        return;
+        //默认上传路径
+        [self setupCloudRegionName:@"ap-chengdu" bucketName:@"testhcc-1256637689"];
     }
     ///其他业务
     
@@ -232,12 +251,15 @@ static NSString *_regionName= nil;
 
 + (void)uploadLogResult:(void (^)(BOOL))handle{
     NSArray *listFile = [self getLogListFile];
-    if (listFile.count == 0) {
+    NSUInteger targetCount = listFile.count;
+    if (targetCount == 0) {
         handle(YES);
         return;
     }
-    __block BOOL hasCallBack = NO; //只回调1次
-    for (int i = 0; i < listFile.count; i++) {
+    __block BOOL uploadError = NO;
+    
+    __block NSUInteger completeCount = 0;
+    for (int i = 0; i < targetCount; i++) {
         NSString *filePath = listFile[i];
         NSString *fileName = [[filePath componentsSeparatedByString:@"/"] lastObject];
         NSString *host = [NSString stringWithFormat:@"%@.cos.%@.myqcloud.com",_bucketName,_regionName];
@@ -248,6 +270,7 @@ static NSString *_regionName= nil;
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
         request.allHTTPHeaderFields = @{@"Host":host};
         request.HTTPMethod = @"POST";
+        request.timeoutInterval = 6;
         NSMutableData *data = [NSMutableData data];
         //拼接第一个参数key
         [data appendData:[[NSString stringWithFormat:@"--%@\r\n", theBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -271,14 +294,16 @@ static NSString *_regionName= nil;
         NSURLSession *session = [NSURLSession sharedSession];
         NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             NSUInteger code = ((NSHTTPURLResponse*)response).statusCode;
-            if (code < 300) {
-                if (hasCallBack==NO) {
-                    hasCallBack = YES;
-                    handle(YES);
-                }
+            BOOL fail = code>300 || code==0;
+            uploadError = uploadError || fail;
+            if (fail == NO) {//上传成功后删除文件
                 if ([self distanceToday:filePath] != 0) {
                     [self removeFileOfPath:filePath];
                 }
+            }
+            completeCount++;
+            if (completeCount == targetCount) {//任务结束
+                handle(uploadError==NO);
             }
         }];
         [dataTask resume];

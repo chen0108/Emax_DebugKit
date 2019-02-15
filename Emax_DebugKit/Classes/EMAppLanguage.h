@@ -10,6 +10,7 @@
 //语言改变通知
 FOUNDATION_EXPORT NSString * const kAppLanguageDidChangeNotification;
 
+typedef void(^languageChange)(void);
 
 @interface EMAppLanguage : NSObject
 
@@ -42,6 +43,12 @@ FOUNDATION_EXPORT NSString * const kAppLanguageDidChangeNotification;
  *  @brief  获取当前是否开启自定义语言状态
  */
 + (BOOL)customLanguageEnable;
+
+
+/**
+ *  @brief 语言变化时的回调,(建议在回调内实现退出app,或者重加载根控制器来替换已加载的控制器)
+ */
++ (void)languageChangedHander:(void(^)(void))handler;
 
 
 

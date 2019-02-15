@@ -44,7 +44,7 @@ static NSString *_inputWord;
 + (void)access{
     EMDebugListViewController *aidVC = [EMDebugListViewController new];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:aidVC];
-    [nav.navigationBar setTintColor:[UIColor blackColor]];
+    [nav.navigationBar setBarTintColor:[UIColor whiteColor]];
     [nav.navigationBar setTranslucent:NO];
     [nav.navigationBar setTintColor:[UIColor blackColor]];
     [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];

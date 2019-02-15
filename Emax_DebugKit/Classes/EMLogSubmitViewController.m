@@ -37,7 +37,7 @@
         _textView.layer.borderColor = [UIColor grayColor].CGColor;
         _textView.textColor = [UIColor blackColor];
         _textView.font = [UIFont boldSystemFontOfSize:15];
-        _textView.frame = CGRectMake(20, CGRectGetMaxY(self.titleLb.frame) + 10, self.view.bounds.size.width-40, 240 * self.view.bounds.size.height/667);
+        _textView.frame = CGRectMake(20, CGRectGetMaxY(self.titleLb.frame) + 10, self.view.bounds.size.width-40, 160 * self.view.bounds.size.height/667);
     }
     return _textView;
 }
@@ -101,10 +101,6 @@
     [scr addSubview:self.textView];
     [scr addSubview:self.btnSubmit];
     scr.contentSize = CGSizeMake(self.view.bounds.size.width, CGRectGetMaxY(self.btnSubmit.frame) + 20);
-
-    if ([EMLogManager haveConfixCloud] == NO) {
-        [EMLogManager setupCloudRegionName:@"ap-chengdu" bucketName:@"testhcc-1256637689"];
-    }
 }
 
 - (void)setupCloudRegionName:(NSString *)regionName bucketName:(NSString *)bucketName{
@@ -117,7 +113,7 @@
         [self submitResultState:-1];
         return;
     }
-    NSLog(@"###### submit issues ###### => %@",self.textView.text);
+    NSLog(@"======== Submit issues ======== \n<\n %@ \n>",self.textView.text);
     [EMLogManager reportLogResult:^(BOOL isSuccess) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self submitResultState:isSuccess];
