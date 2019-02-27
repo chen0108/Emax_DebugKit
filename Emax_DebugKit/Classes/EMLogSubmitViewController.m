@@ -42,6 +42,17 @@
     return _textView;
 }
 
+- (UILabel *)replayLb{
+    if (!_replayLb) {
+        _replayLb = [UILabel new];
+        _replayLb.numberOfLines = 0;
+        _replayLb.frame = CGRectZero;
+        _replayLb.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+        _replayLb.font = [UIFont boldSystemFontOfSize:14];
+    }
+    return _replayLb;
+}
+
 - (UIButton *)btnSubmit{
     if (!_btnSubmit) {
         _btnSubmit = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -101,10 +112,22 @@
     [scr addSubview:self.textView];
     [scr addSubview:self.btnSubmit];
     scr.contentSize = CGSizeMake(self.view.bounds.size.width, CGRectGetMaxY(self.btnSubmit.frame) + 20);
+
 }
 
-- (void)setupCloudRegionName:(NSString *)regionName bucketName:(NSString *)bucketName{
-    [EMLogManager setupCloudRegionName:regionName bucketName:bucketName];
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    /// 开发者的回复
+    DeveloperPushMessage *message = [EMLogManager getLastPushMessage];
+    if (message) {
+        NSString *title = [NSString stringWithFormat:@"Last developer's Reply  %@\n\n%@\n\n%@",message.timeString,message.message, message.developer];
+        CGFloat width = self.view.frame.size.width - 40;
+        NSDictionary *att = @{NSFontAttributeName:self.replayLb.font};
+        CGFloat height = [title boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:att context:nil].size.height + 20;
+        self.replayLb.text = title;
+        self.replayLb.frame = CGRectMake(20, self.view.frame.size.height - height - 20, width, height);
+        [self.view addSubview:self.replayLb];
+    }
 }
 
 - (void)submit{
@@ -113,6 +136,7 @@
         [self submitResultState:-1];
         return;
     }
+    NSLog(@"deviceName: %@",[self getDeviceModel]);
     NSLog(@"======== Submit issues ======== \n<\n %@ \n>",self.textView.text);
     [EMLogManager reportLogResult:^(BOOL isSuccess) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -150,12 +174,21 @@
     [self.view endEditing:YES];
 }
 
-
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]) {
         [textView endEditing:YES];
     }
     return YES;
+}
+
+
+///设备型号
+- (NSString *)getDeviceModel{
+    // 需要#import "sys/utsname.h"
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    return deviceString;
 }
 
 

@@ -93,26 +93,26 @@
 
 static NSMutableString *_logStr;
 
-static NSUInteger _state;
-+ (void)setRedirectLogState:(RedirectLogState)state{
-    _state = state;
-    switch (state) {
-        case RedirectLogToText:
-            [[NSNotificationCenter defaultCenter] removeObserver:self];
-            [self redirectToText];
-            break;
-        case RedirectLogToFile:
-            NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
-            [[NSNotificationCenter defaultCenter] removeObserver:self];
-            [self redirectToFile];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redirectToFile) name:UIApplicationWillEnterForegroundNotification object:nil];
-            break;
+static BOOL _enable;
++ (void)enableRedirectLog:(BOOL)enable{
+    _enable = enable;
+    if (_enable) {
+        NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [self redirectToFile];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redirectToFile) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
 }
 
-+ (RedirectLogState)currentLogState{
-    return _state;
++ (BOOL)hasEnableRedirectLog{
+    return _enable;
 }
+
+static NSUInteger _durationDay;
++ (void)setLogSaveDurationDay:(NSUInteger)day{
+    _durationDay = day;
+}
+
 /**
  *  获取异常崩溃信息
  */
@@ -130,61 +130,18 @@ void UncaughtExceptionHandler(NSException *exception) {
     dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
 }
 
-
-/* ============================================================ */
-#pragma mark - 重定向日志到self
-/* ============================================================ */
-
-+ (void)redirectToText{
-    [self redirectSTD:STDOUT_FILENO];
-    [self redirectSTD:STDERR_FILENO];
-}
-
-+ (NSString *)currentLog{
-    if (_logStr == nil) {
-        _logStr = [NSMutableString string];
-    }
-    return _logStr;
-}
-
-+ (void)redirectSTD:(int )fd{
-    NSPipe * pipe = [NSPipe pipe] ;// 初始化一个NSPipe 对象
-    NSFileHandle *pipeReadHandle = [pipe fileHandleForReading] ;
-    dup2([[pipe fileHandleForWriting] fileDescriptor], fd) ;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(redirectNotificationHandle:)
-                                                 name:NSFileHandleReadCompletionNotification
-                                               object:pipeReadHandle]; // 注册通知
-    [pipeReadHandle readInBackgroundAndNotify];
-}
-
-+ (void)redirectNotificationHandle:(NSNotification *)nf{ // 通知方法
-    NSData *data = [[nf userInfo] objectForKey:NSFileHandleNotificationDataItem];
-    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    if (_logStr == nil) {
-        _logStr = [NSMutableString string];
-    }
-    [_logStr appendString:[NSString stringWithFormat:@"\n%@",str]];
-    [[nf object] readInBackgroundAndNotify];
-}
-
-/* ============================================================ */
-#pragma mark - 模式二:本地文件保存日志, 支持日志上传
-/* ============================================================ */
-
+/// 重定向到本地
 + (void)redirectToFile{
-    [self clearHistoryBeforeDays:15];
+    [self clearExpiredLogs];
     NSString *logFile = [self currentLogFilePath];
     //log写入
     freopen([logFile cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
     freopen([logFile cStringUsingEncoding:NSASCIIStringEncoding], "a+", stdout);
 }
 
-// 文件命名规则
+// 文件路径
 + (NSString *)currentLogFilePath{
     UIDevice *device = [UIDevice currentDevice];
-    NSString *deviceName = device.name;
     NSString *subUUID = [[device.identifierForVendor UUIDString] substringToIndex:6];
     
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
@@ -196,12 +153,12 @@ void UncaughtExceptionHandler(NSException *exception) {
     
     NSString *day = [[NSDate date] stringWithFormat:@"yyMMdd"];
     //创建文件路径 文件名不能含有非法字符
-    //displayName+3323F5++iPhone XR=> 1.0.1b5 => 181121.log
-    NSString *documentpath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *pathCreDirAt = [NSString stringWithFormat:@"%@/ELog",documentpath];
+    //displayName[3323F5](1.0.1b5)==> 181121.log
+    NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *pathCreDirAt = [NSString stringWithFormat:@"%@/ELog",cachesDir];
     NSError *errorDirectory = nil;
     [[NSFileManager defaultManager] createDirectoryAtPath:pathCreDirAt withIntermediateDirectories:YES attributes:nil error:&errorDirectory];
-    NSString *fileName = [NSString stringWithFormat:@"%@+%@=%@=%@=>%@.log",displayName,subUUID,deviceName,appVersion,day];
+    NSString *fileName = [NSString stringWithFormat:@"%@[%@](%@)==> %@.log",displayName,subUUID,appVersion,day];
     NSString *logFilePath = [pathCreDirAt stringByAppendingPathComponent:fileName];
     return logFilePath;
 }
@@ -212,10 +169,6 @@ static NSString *_regionName= nil;
                   bucketName:(NSString *)bucketName{
     _bucketName = bucketName;
     _regionName = regionName;
-}
-
-+ (BOOL)haveConfixCloud{
-    return _bucketName && _regionName;
 }
 
 ///初始化一个上传事件的手势
@@ -241,7 +194,7 @@ static NSString *_regionName= nil;
 + (void)reportLogResult:(void (^)(BOOL))handle{
     if (_bucketName == nil || _regionName == nil) {
         //默认上传路径
-        [self setupCloudRegionName:@"ap-chengdu" bucketName:@"testhcc-1256637689"];
+        [self setupCloudRegionName:@"ap-chengdu" bucketName:@"emax-1256637689"];
     }
     ///其他业务
     
@@ -310,12 +263,15 @@ static NSString *_regionName= nil;
     }
 }
 
-// day == 15 清除15天前的日志
-+ (void)clearHistoryBeforeDays:(NSInteger)day{
+// 清除过期日志
++ (void)clearExpiredLogs{
+    if (_durationDay == 0) {
+        _durationDay = 3;
+    }
     NSArray *list = [self getLogListFile];
     for (NSString *path in list) {
         NSInteger distance = [self distanceToday:path];
-        if (distance < day*(-1)) {
+        if (distance < _durationDay*(-1)) {
             [self removeFileOfPath:path];
         }
     }
@@ -323,10 +279,11 @@ static NSString *_regionName= nil;
 
 ///获取日志文件列表
 + (NSArray *)getLogListFile{
-    NSString *documentpath = [NSString stringWithFormat:@"%@/ELog",[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]];
+    NSString *cachesDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *pathCreDirAt = [NSString stringWithFormat:@"%@/ELog",cachesDir];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
-    NSArray *fileList = [fileManager contentsOfDirectoryAtPath:documentpath error:&error];
+    NSArray *fileList = [fileManager contentsOfDirectoryAtPath:pathCreDirAt error:&error];
     NSMutableArray *logFiles = [NSMutableArray new];
     if (error) {
         NSLog(@"getFileListInFolderWithPathFailed, errorInfo:%@",error);
@@ -344,7 +301,7 @@ static NSString *_regionName= nil;
             if (date == nil) {
                 continue;
             }
-            [logFiles addObject:[NSString stringWithFormat:@"%@/%@",documentpath,fileName]];
+            [logFiles addObject:[NSString stringWithFormat:@"%@/%@",pathCreDirAt,fileName]];
         }
     }
     return logFiles;
@@ -383,16 +340,69 @@ static NSString *_regionName= nil;
     return flag;
 }
 
-///设备型号
-+ (NSString *)getDeviceModel{
-    // 需要#import "sys/utsname.h"
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-    return deviceString;
+/* ============================================================ */
+#pragma mark - PUSH MESSAGE
+/* ============================================================ */
+
+static  DeveloperPushMessage*_pushMessage;
+/// 读取最新的推送
++ (DeveloperPushMessage *)getLastPushMessage{
+    if (_pushMessage == nil) {
+        NSDictionary *info = [[NSUserDefaults standardUserDefaults] objectForKey:@"EMLogReplyMessage"];
+        if (info) {
+            _pushMessage = [DeveloperPushMessage new];
+            _pushMessage.message = [info objectForKey:@"alert"];
+            _pushMessage.developer = [info objectForKey:@"developer"];
+            _pushMessage.timeString = [info objectForKey:@"time"];
+        }
+    }
+    return _pushMessage;
+    
+}
+
+/// 保存最近的推送
++ (void)setLastPushMessage:(DeveloperPushMessage *)msg{
+    _pushMessage = msg;
+    NSMutableDictionary *info = [NSMutableDictionary new];
+    if (msg.message) {
+        [info setObject:msg.message forKey:@"alert"];
+    }
+    if (msg.developer) {
+        [info setObject:msg.developer forKey:@"developer"];
+    }
+    if (msg.timeString) {
+        [info setObject:msg.timeString forKey:@"time"];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:info forKey:@"EMLogReplyMessage"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
 
 
+
+@implementation DeveloperPushMessage
+
++ (DeveloperPushMessage *)parseFromDictionay:(NSDictionary *)info{
+    NSString *title = [info objectForKey:identityKey];
+    if ([title isEqualToString:identityVal]) {
+        DeveloperPushMessage *message = [DeveloperPushMessage new];
+        message.title = identityVal;
+        message.message = [info objectForKey:@"alert"];
+        message.developer = [info objectForKey:@"developer"];
+        ///消息体内的东8区时间转成当地时间
+        NSString *time = [info objectForKey:@"time"];
+        NSDateFormatter *fm = [[NSDateFormatter alloc] init];
+        fm.dateFormat = @"yyyy/MM/dd HH:mm:ss";
+        [fm setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8*3600]];
+        NSDate *date = [fm dateFromString:time];
+        if (date) {
+            message.timeString = [date stringWithFormat:@"MM/dd HH:mm"];
+        }
+        return message;
+    }
+    return nil;
+}
+
+@end
 

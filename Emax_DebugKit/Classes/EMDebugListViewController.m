@@ -35,7 +35,7 @@
     if ([EMAppLanguage customLanguageEnable] == NO) {
         [self.stateArray replaceObjectAtIndex:1 withObject:@"(当前不支持)"];
     }
-    if ([EMLogManager currentLogState] != RedirectLogToFile) {
+    if ([EMLogManager hasEnableRedirectLog] == NO) {
         [self.stateArray replaceObjectAtIndex:2 withObject:@"(当前不支持)"];
     }
 }
