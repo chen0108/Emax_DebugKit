@@ -102,7 +102,7 @@
         self.title = @"上传服务器";
     }
     self.view.backgroundColor = UIColor.whiteColor;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
     // Do any additional setup after loading the view.
     
     UIScrollView *scr = [UIScrollView new];
