@@ -11,7 +11,6 @@
 NSString * const kAppLanguageDidChangeNotification = @"EMAppLanguageDidChanged";
 NSString * const customLanKey = @"customLanKey";
 
-static NSNumber *_customEnable = nil;
 static NSDictionary *_LanDictionary = nil;
 
 /* *************************-*************************-************************* */
@@ -61,14 +60,18 @@ static const char kBundleKey = 0;
     for (NSString *lanVar in lanArray) {
         if ([lan hasPrefix:lanVar]) {//
             NSString *source = [lanDict objectForKey:lanVar];
-            NSLog(@"加载语言包%@ => %@",lanVar,source);
             path = [[NSBundle mainBundle] pathForResource:source ofType:@"lproj"];
+            if (path) {
+                NSLog(@"===加载语言包%@ => %@",lanVar,source);
+            }else{
+                NSLog(@"===未找到语言包%@ => %@",lanVar,source);
+            }
             break;
         }
     }
     //默认英文包
     if (path == nil) {
-        NSLog(@"%@",@"未找到语言包,加载默认英文包");
+        NSLog(@"===加载默认英文包");
         path = [[NSBundle mainBundle] pathForResource:@"en"ofType:@"lproj"];
     }
     NSBundle *bundle = [NSBundle bundleWithPath:path];
@@ -111,21 +114,6 @@ static const char kBundleKey = 0;
     return _LanDictionary;
 }
 
-/// 是否开启自定义语言, 否则跟随手机第一语言
-+ (void)setCustomLanguageEnable:(BOOL)enable{
-    _customEnable = [NSNumber numberWithBool:enable];
-    if (enable == NO) {
-        [self setCustomLanguage:nil];
-    }
-    //重新初始化bundle
-    [NSBundle setup];
-}
-
-/// 获取当前是否开启自定义语言状态
-+ (BOOL)customLanguageEnable{
-    return _customEnable.boolValue;
-}
-
 
 static languageChange _handler;
 + (void)languageChangedHander:(void (^)(void))handler{
@@ -164,11 +152,7 @@ static languageChange _handler;
 
 //当前app语言
 + (NSString *)currentAppLanguage{
-    NSString *lan;
-    BOOL enable = [_customEnable boolValue];
-    if (enable) {
-        lan = [self currentCustomLanguage];
-    }
+    NSString *lan = [self currentCustomLanguage];
     if (lan == nil || lan.length == 0) {
         lan = [self currentSystemLanguage];
     }

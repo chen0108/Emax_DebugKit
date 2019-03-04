@@ -23,6 +23,7 @@ typedef void(^languageChange)(void);
                                                       @"ru-":@"ru-RU",
                                                       @"fr-":@"fr",
                                                       @"el-":@"el-GR",
+                                                      @"en-":@"en",
                                                        }];
  */
 + (void)setSupportLanguageDictionary:(NSDictionary *)dict;
@@ -33,27 +34,14 @@ typedef void(^languageChange)(void);
  */
 + (NSDictionary *)supportLanguageDictionary;
 
-
-/**
- *  @brief  是否开启自定义语言, 否则跟随手机第一语言
- */
-+ (void)setCustomLanguageEnable:(BOOL)enable;
-
-/**
- *  @brief  获取当前是否开启自定义语言状态
- */
-+ (BOOL)customLanguageEnable;
-
-
 /**
  *  @brief 语言变化时的回调,(建议在回调内实现退出app,或者重加载根控制器来替换已加载的控制器)
  */
 + (void)languageChangedHander:(void(^)(void))handler;
 
 
-
 /**
- *  @brief  切换自定义语言. (前提是setCustomLanguageEnable设置了YES才有效)
+ *  @brief  切换自定义语言
  */
 + (void)setCustomLanguage:(NSString *)lan;
 

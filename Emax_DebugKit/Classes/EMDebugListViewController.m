@@ -32,9 +32,6 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"退出" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
     
     self.stateArray = [NSMutableArray arrayWithObjects:@"",@"",@"",nil];
-    if ([EMAppLanguage customLanguageEnable] == NO) {
-        [self.stateArray replaceObjectAtIndex:1 withObject:@"(当前不支持)"];
-    }
     if ([EMLogManager hasEnableRedirectLog] == NO) {
         [self.stateArray replaceObjectAtIndex:2 withObject:@"(当前不支持)"];
     }

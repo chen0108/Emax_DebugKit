@@ -30,7 +30,8 @@ static NSString *_inputWord;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField * tf1 = alertController.textFields[0];
-        if ([tf1.text isEqualToString:_password]) {
+        NSString *pwd = [tf1.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+        if ([pwd isEqualToString:_password]) {
             _inputWord = tf1.text;
             [self access];
         }
