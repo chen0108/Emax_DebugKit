@@ -98,6 +98,8 @@ static const char kBundleKey = 0;
 /// 设置支持的语言
 + (void)setSupportLanguageDictionary:(NSDictionary *)dict{
     _LanDictionary = dict;
+    //重新初始化bundle
+    [NSBundle setup];
 }
 
 
