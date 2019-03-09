@@ -63,41 +63,8 @@
  */
 + (BOOL)removeFileOfPath:(NSString *)path;
 
-
-/* ============================================================ */
-#pragma mark - PUSH MESSAGE
-/* ============================================================ */
-/**
- {
-    alert = "Your message Here";
-    developer = "chen";
-    time = "2019/01/30 HH:mm:ss";   //东8区时间
-    title = "emaxReply";
- };
- */
-/// 读取最新的推送
-+ (DeveloperPushMessage *)getLastPushMessage;
-
-/// 保存最近的推送
-+ (void)setLastPushMessage:(DeveloperPushMessage *)msg;
-
-
 @end
 
-static NSString *const identityKey = @"emaxTitle";
-static NSString *const identityVal = @"emaxReply";
-
-@interface DeveloperPushMessage : NSObject
-
-@property(nonatomic, copy  ) NSString *title;
-@property(nonatomic, copy  ) NSString *message;
-@property(nonatomic, copy  ) NSString *developer;
-@property(nonatomic, copy  ) NSString *timeString;
-
-/// 规定info必须包含identityKey这个key才解析, 且值为identityVal
-+ (DeveloperPushMessage *)parseFromDictionay:(NSDictionary *)info;
-
-@end
 
 
 

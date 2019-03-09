@@ -25,14 +25,9 @@
     ges.delegate = self;
     [self.window addGestureRecognizer:ges];
     
-    [EMLogManager enableRedirectLog:NO];
-    
-    DeveloperPushMessage *msg = [DeveloperPushMessage new];
-    msg.message = @"fweuieivnifnvjdfnvdfjkijerhfiuerfhiuerncifdnviufevnidffijvnefivnfijvnifvnifnvgirbnigjrnbijgvnijgfnbigrnvjkfd,fnerifenij,vefnjivefnijv,vefnijvefmve,!";
-    msg.developer = @"chen";
-    msg.timeString = @"02/06 18:44";
-    [EMLogManager setLastPushMessage:msg];
-    
+    [EMLogManager enableRedirectLog:YES];
+    [EMFeedbackManager setupDefaultAppIdKey];
+    [EMFeedbackManager setEnableAlert:YES titleAttribute:nil textAttribute:nil];
     [EMAppLanguage setSupportLanguageDictionary:@{@"zh-":@"zh-Hans",
                                                   @"de-":@"de",
                                                   @"ja-":@"ja",

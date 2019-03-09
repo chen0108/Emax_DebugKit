@@ -16,9 +16,11 @@
 		5226CB9AF2EB84E5615076F43EDA3E46 /* EMLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B40189FF6E25B3FFFE96AED972036093 /* EMLogManager.m */; };
 		5EFBC7ADF3E0738347C457DE32798AAB /* EMFactoryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CC9A196F4D7F955B744E5EBD1D446797 /* EMFactoryManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6679D035BB1D96FEC03CE8B29EB82166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		74801AEA2232706800F526E3 /* EMFeedbackManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 74801AE82232706800F526E3 /* EMFeedbackManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74801AEB2232706800F526E3 /* EMFeedbackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 74801AE92232706800F526E3 /* EMFeedbackManager.m */; };
 		7496037221D0E102008E55A1 /* EMLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036A21D0E100008E55A1 /* EMLogViewController.m */; };
 		7496037321D0E102008E55A1 /* EMDebugListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036B21D0E100008E55A1 /* EMDebugListViewController.m */; };
-		7496037421D0E102008E55A1 /* EMLogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7496036C21D0E101008E55A1 /* EMLogViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7496037421D0E102008E55A1 /* EMLogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7496036C21D0E101008E55A1 /* EMLogViewController.h */; };
 		7496037521D0E102008E55A1 /* EMFactoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036D21D0E101008E55A1 /* EMFactoryViewController.m */; };
 		7496037621D0E102008E55A1 /* EMAppLanViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7496036E21D0E101008E55A1 /* EMAppLanViewController.h */; };
 		7496037721D0E102008E55A1 /* EMAppLanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7496036F21D0E101008E55A1 /* EMAppLanViewController.m */; };
@@ -89,6 +91,8 @@
 		6634D0BF65073FD9C7BF3984858A34A0 /* Pods-Emax_DebugKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Emax_DebugKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6A55565EE8B23E4AC49E4F15BB569348 /* Emax_DebugKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Emax_DebugKit-prefix.pch"; sourceTree = "<group>"; };
 		6CFF7D64E1F7A03D558DBBE246581132 /* Pods-Emax_DebugKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Emax_DebugKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		74801AE82232706800F526E3 /* EMFeedbackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMFeedbackManager.h; path = Emax_DebugKit/Classes/EMFeedbackManager.h; sourceTree = "<group>"; };
+		74801AE92232706800F526E3 /* EMFeedbackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMFeedbackManager.m; path = Emax_DebugKit/Classes/EMFeedbackManager.m; sourceTree = "<group>"; };
 		7496036A21D0E100008E55A1 /* EMLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMLogViewController.m; path = Emax_DebugKit/Classes/EMLogViewController.m; sourceTree = "<group>"; };
 		7496036B21D0E100008E55A1 /* EMDebugListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMDebugListViewController.m; path = Emax_DebugKit/Classes/EMDebugListViewController.m; sourceTree = "<group>"; };
 		7496036C21D0E101008E55A1 /* EMLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMLogViewController.h; path = Emax_DebugKit/Classes/EMLogViewController.h; sourceTree = "<group>"; };
@@ -274,12 +278,14 @@
 				B6D11343C8DFC3DA91C7F78E5939B59D /* EMFactoryManager.m */,
 				7496037021D0E101008E55A1 /* EMFactoryViewController.h */,
 				7496036D21D0E101008E55A1 /* EMFactoryViewController.m */,
+				74801AE82232706800F526E3 /* EMFeedbackManager.h */,
+				74801AE92232706800F526E3 /* EMFeedbackManager.m */,
 				7AE5483145E5724F711683C7BE3A52A0 /* EMLogManager.h */,
 				B40189FF6E25B3FFFE96AED972036093 /* EMLogManager.m */,
-				7496036C21D0E101008E55A1 /* EMLogViewController.h */,
-				7496036A21D0E100008E55A1 /* EMLogViewController.m */,
 				74A11D8621F9A49D000A3285 /* EMLogSubmitViewController.h */,
 				74A11D8721F9A49D000A3285 /* EMLogSubmitViewController.m */,
+				7496036C21D0E101008E55A1 /* EMLogViewController.h */,
+				7496036A21D0E100008E55A1 /* EMLogViewController.m */,
 				45649B9CE37D41EAFA9393BC30A1D781 /* NSBundle+DebugKit.h */,
 				508FE7A44D4851062186F1679CFB0B18 /* NSBundle+DebugKit.m */,
 				7496037C21D0E2FF008E55A1 /* EMDebugKit.bundle */,
@@ -330,9 +336,10 @@
 				4C7885E1C711ED43AEF9A2253B59E74B /* EMDebugKit.h in Headers */,
 				5EFBC7ADF3E0738347C457DE32798AAB /* EMFactoryManager.h in Headers */,
 				74A11D8821F9A49D000A3285 /* EMLogSubmitViewController.h in Headers */,
+				74801AEA2232706800F526E3 /* EMFeedbackManager.h in Headers */,
 				4D667FECB55BBC4C66F68DE38C450DCC /* EMLogManager.h in Headers */,
-				7496037421D0E102008E55A1 /* EMLogViewController.h in Headers */,
 				7496037921D0E102008E55A1 /* EMDebugListViewController.h in Headers */,
+				7496037421D0E102008E55A1 /* EMLogViewController.h in Headers */,
 				7496037621D0E102008E55A1 /* EMAppLanViewController.h in Headers */,
 				E72FE76CED5A9051AA1308E799CB21FC /* NSBundle+DebugKit.h in Headers */,
 				7496037821D0E102008E55A1 /* EMFactoryViewController.h in Headers */,
@@ -499,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74801AEB2232706800F526E3 /* EMFeedbackManager.m in Sources */,
 				A9771F91D1AB1C3B82CD7DB101322EE8 /* EMAppLanguage.m in Sources */,
 				74A11D8921F9A49D000A3285 /* EMLogSubmitViewController.m in Sources */,
 				044781FB1C3FA7EAF334505C452B5587 /* Emax_DebugKit-dummy.m in Sources */,

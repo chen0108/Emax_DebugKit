@@ -7,6 +7,7 @@
 
 #import "EMLogSubmitViewController.h"
 #import "EMLogManager.h"
+#import "EMFeedbackManager.h"
 #import "sys/utsname.h"
 
 @interface EMLogSubmitViewController ()<UITextViewDelegate>
@@ -47,7 +48,7 @@
         _replayLb = [UILabel new];
         _replayLb.numberOfLines = 0;
         _replayLb.frame = CGRectZero;
-        _replayLb.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+        _replayLb.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
         _replayLb.font = [UIFont boldSystemFontOfSize:14];
     }
     return _replayLb;
@@ -118,9 +119,9 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     /// 开发者的回复
-    DeveloperPushMessage *message = [EMLogManager getLastPushMessage];
-    if (message) {
-        NSString *title = [NSString stringWithFormat:@"Last developer's Reply  %@\n\n%@\n\n%@",message.timeString,message.message, message.developer];
+    EMFeedbackMessage *message = [EMFeedbackManager getLastLocalMessage];
+    if (message.content.length > 0) {
+        NSString *title = [NSString stringWithFormat:@"\nLast reply from the developer  \n\n%@\n\n%@\n",message.content,[message dateString]];
         CGFloat width = self.view.frame.size.width - 40;
         NSDictionary *att = @{NSFontAttributeName:self.replayLb.font};
         CGFloat height = [title boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:att context:nil].size.height + 20;
@@ -136,8 +137,9 @@
         [self submitResultState:-1];
         return;
     }
-    NSLog(@"deviceName: %@",[self getDeviceModel]);
-    NSLog(@"======== Submit issues ======== \n<\n %@ \n>",self.textView.text);
+    NSLog(@"===[EmaxDebug] deviceName: %@",[self getDeviceModel]);
+    NSLog(@"===[EmaxDebug] ======== Submit issues ======== \n<\n %@ \n>",self.textView.text);
+    [EMFeedbackManager sendMessage:self.textView.text];
     [EMLogManager reportLogResult:^(BOOL isSuccess) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self submitResultState:isSuccess];

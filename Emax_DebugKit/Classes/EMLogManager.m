@@ -121,7 +121,7 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSString *reason = [exception reason];
     NSString *name = [exception name];
     NSString *content = [NSString stringWithFormat:@"\n========  异常错误报告  ========\n位置:%s\nname:%@\nreason:%@\ncallStackSymbols:\n%@\n", __FUNCTION__,name,reason,[callStack componentsJoinedByString:@"\n"]];
-    NSLog(@"\n%@\n",content);
+    NSLog(@"===[EmaxDebug] \n%@\n",content);
     //把异常崩溃信息发送至开发者
     __block dispatch_semaphore_t sem = dispatch_semaphore_create(0);
     [EMLogManager reportLogResult:^(BOOL isSuccess) {
@@ -271,7 +271,7 @@ static NSString *_regionName= nil;
     NSArray *list = [self getLogListFile];
     for (NSString *path in list) {
         NSInteger distance = [self distanceToday:path];
-        if (distance < _durationDay*(-1)) {
+        if (distance >= _durationDay) {
             [self removeFileOfPath:path];
         }
     }
@@ -286,7 +286,7 @@ static NSString *_regionName= nil;
     NSArray *fileList = [fileManager contentsOfDirectoryAtPath:pathCreDirAt error:&error];
     NSMutableArray *logFiles = [NSMutableArray new];
     if (error) {
-        NSLog(@"getFileListInFolderWithPathFailed, errorInfo:%@",error);
+        NSLog(@"===[EmaxDebug] getFileListInFolderWithPathFailed, errorInfo:%@",error);
     }else{
         for (int i = 0; i < fileList.count; i++) {
             NSString *fileName = fileList[i];
@@ -322,7 +322,7 @@ static NSString *_regionName= nil;
     if (date == nil) {
         return 0;
     }
-    return [date distanceDaysIgnoreTimeToDate:today];
+    return [today distanceDaysIgnoreTimeToDate:date];
 }
 
 //从path路径中移除文件
@@ -340,69 +340,4 @@ static NSString *_regionName= nil;
     return flag;
 }
 
-/* ============================================================ */
-#pragma mark - PUSH MESSAGE
-/* ============================================================ */
-
-static  DeveloperPushMessage*_pushMessage;
-/// 读取最新的推送
-+ (DeveloperPushMessage *)getLastPushMessage{
-    if (_pushMessage == nil) {
-        NSDictionary *info = [[NSUserDefaults standardUserDefaults] objectForKey:@"EMLogReplyMessage"];
-        if (info) {
-            _pushMessage = [DeveloperPushMessage new];
-            _pushMessage.message = [info objectForKey:@"alert"];
-            _pushMessage.developer = [info objectForKey:@"developer"];
-            _pushMessage.timeString = [info objectForKey:@"time"];
-        }
-    }
-    return _pushMessage;
-    
-}
-
-/// 保存最近的推送
-+ (void)setLastPushMessage:(DeveloperPushMessage *)msg{
-    _pushMessage = msg;
-    NSMutableDictionary *info = [NSMutableDictionary new];
-    if (msg.message) {
-        [info setObject:msg.message forKey:@"alert"];
-    }
-    if (msg.developer) {
-        [info setObject:msg.developer forKey:@"developer"];
-    }
-    if (msg.timeString) {
-        [info setObject:msg.timeString forKey:@"time"];
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:info forKey:@"EMLogReplyMessage"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 @end
-
-
-
-@implementation DeveloperPushMessage
-
-+ (DeveloperPushMessage *)parseFromDictionay:(NSDictionary *)info{
-    NSString *title = [info objectForKey:identityKey];
-    if ([title isEqualToString:identityVal]) {
-        DeveloperPushMessage *message = [DeveloperPushMessage new];
-        message.title = identityVal;
-        message.message = [info objectForKey:@"alert"];
-        message.developer = [info objectForKey:@"developer"];
-        ///消息体内的东8区时间转成当地时间
-        NSString *time = [info objectForKey:@"time"];
-        NSDateFormatter *fm = [[NSDateFormatter alloc] init];
-        fm.dateFormat = @"yyyy/MM/dd HH:mm:ss";
-        [fm setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8*3600]];
-        NSDate *date = [fm dateFromString:time];
-        if (date) {
-            message.timeString = [date stringWithFormat:@"MM/dd HH:mm"];
-        }
-        return message;
-    }
-    return nil;
-}
-
-@end
-

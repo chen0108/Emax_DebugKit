@@ -14,8 +14,8 @@
 
 #import "EMFactoryManager.h"
 
+#import "EMFeedbackManager.h"
 #import "EMLogManager.h"
-#import "EMLogViewController.h"
 #import "EMLogSubmitViewController.h"
 
 

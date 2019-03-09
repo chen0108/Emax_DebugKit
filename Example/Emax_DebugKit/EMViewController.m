@@ -7,6 +7,7 @@
 //
 
 #import "EMViewController.h"
+#import "EMDebugKit.h"
 
 @interface EMViewController ()
 
@@ -32,8 +33,6 @@
 }
 - (IBAction)nextPage:(id)sender {
     NSLog(@"%@",@"进入下一界面");
-    NSArray *arr = @[@1,@1];
-    NSString *r = arr[5];
 }
 
 @end

@@ -62,16 +62,16 @@ static const char kBundleKey = 0;
             NSString *source = [lanDict objectForKey:lanVar];
             path = [[NSBundle mainBundle] pathForResource:source ofType:@"lproj"];
             if (path) {
-                NSLog(@"===加载语言包%@ => %@",lanVar,source);
+                NSLog(@"===[EmaxDebug]加载语言包%@ => %@",lanVar,source);
             }else{
-                NSLog(@"===未找到语言包%@ => %@",lanVar,source);
+                NSLog(@"===[EmaxDebug]未找到语言包%@ => %@",lanVar,source);
             }
             break;
         }
     }
     //默认英文包
     if (path == nil) {
-        NSLog(@"===加载默认英文包");
+        NSLog(@"===[EmaxDebug]加载默认英文包");
         path = [[NSBundle mainBundle] pathForResource:@"en"ofType:@"lproj"];
     }
     NSBundle *bundle = [NSBundle bundleWithPath:path];
