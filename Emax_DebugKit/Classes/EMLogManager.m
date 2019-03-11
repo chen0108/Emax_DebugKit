@@ -146,6 +146,10 @@ void UncaughtExceptionHandler(NSException *exception) {
     
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
     NSString *displayName = [infoDic objectForKey:@"CFBundleDisplayName"];
+    NSMutableString *pinyin = [displayName mutableCopy];
+    CFStringTransform((__bridge CFMutableStringRef)pinyin,NULL, kCFStringTransformMandarinLatin, NO);
+    CFStringTransform((__bridge CFMutableStringRef)pinyin,NULL, kCFStringTransformStripCombiningMarks, NO);
+    displayName = [pinyin stringByReplacingOccurrencesOfString:@" " withString:@"" ];
     
     NSString *ver = [infoDic objectForKey:@"CFBundleShortVersionString"];
     NSString *build = [infoDic objectForKey:@"CFBundleVersion"];
