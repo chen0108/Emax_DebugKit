@@ -12,6 +12,8 @@
 
 @interface EMLogSubmitViewController ()<UITextViewDelegate>
 
+@property (nonatomic, assign) BOOL isUploading;
+
 
 @end
 
@@ -137,11 +139,16 @@
         [self submitResultState:-1];
         return;
     }
+    if (self.isUploading == YES) {
+        return;
+    }
+    self.isUploading = YES;
     NSLog(@"===[EmaxDebug] deviceName: %@",[self getDeviceModel]);
     NSLog(@"===[EmaxDebug] ======== Submit issues ======== \n<\n %@ \n>",self.textView.text);
     [EMFeedbackManager sendMessage:self.textView.text];
     [EMLogManager reportLogResult:^(BOOL isSuccess) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.isUploading = NO;
             [self submitResultState:isSuccess];
         });
     }];
