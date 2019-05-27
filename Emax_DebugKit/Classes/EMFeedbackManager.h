@@ -35,7 +35,7 @@ typedef void (^NewMessageHandler)(EMFeedbackMessage *message);
 + (NSDictionary *)getAllLocalMessage;
 
 /// 发送反馈消息
-+ (void)sendMessage:(NSString *)message;
++ (void)sendMessage:(NSString *)message content:(NSString *)ctent contact:(NSString *)contact;
 
 /// 如果有需要,调用这个方法请求最新回复数据
 + (void)updateLastReplyMessage;

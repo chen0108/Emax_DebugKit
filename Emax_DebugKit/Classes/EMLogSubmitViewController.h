@@ -24,6 +24,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 提交结果回掉, state==-1:没有填写描述无法提交, state==0:提交失败  state==1:提交成功
 @property (nonatomic, copy) void (^submitHandler)(NSUInteger state);
 
+@property (nonatomic, copy  ) NSString *content; //内容
+@property (nonatomic, copy  ) NSString *contact; //联系方式
+
 @end
 
 NS_ASSUME_NONNULL_END

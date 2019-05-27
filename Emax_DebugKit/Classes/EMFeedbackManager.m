@@ -22,6 +22,7 @@ typedef void (^SuccessBlock)(NSDictionary *object);
     NSString *objectId = [dict objectForKey:@"objectId"];
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     [fmt setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    [fmt setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
     [fmt setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     NSDate *date = [fmt dateFromString:time];
     EMFeedbackMessage *message = [EMFeedbackMessage new];
@@ -34,6 +35,7 @@ typedef void (^SuccessBlock)(NSDictionary *object);
 - (NSString *)dateString{
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     [fmt setDateFormat:@"MM-dd HH:mm"];
+    [fmt setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
     return [fmt stringFromDate:self.date];
 }
 
@@ -120,11 +122,11 @@ static NSDictionary *_textAtt;
 }
 
 /// 发送1条反馈消息
-+ (void)sendMessage:(NSString *)message{
++ (void)sendMessage:(NSString *)message content:(NSString *)ctent contact:(NSString *)contact{
     //检查反馈对象是否存在,是否处于打开状态
     // 本地不存在反馈,创建
     if (_feedbackID == nil) {
-        [self createNewFeedbackRet:^(NSDictionary *object) {
+        [self createNewFeedbackContent:ctent contact:contact ret:^(NSDictionary *object) {
             NSString *feedbackID = [object objectForKey:@"objectId"];
             if (feedbackID) {
                 [self saveFeedbackID:feedbackID];
@@ -141,7 +143,7 @@ static NSDictionary *_textAtt;
             }else{
                 //服务器关闭或删除了这个反馈
                 [self saveFeedbackID:nil];
-                [self sendMessage:message];
+                [self sendMessage:message content:ctent contact:contact];
             }
         }];
     }
@@ -191,6 +193,7 @@ static NewMessageHandler _handler;
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
             fmt.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+            [fmt setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
             NSString *time = [fmt stringFromDate:_lastMessage.date]?:@"";
             
             NSMutableAttributedString *str = [NSMutableAttributedString new];
@@ -239,12 +242,18 @@ static NewMessageHandler _handler;
 }
 
 /// 创建1个反馈对象
-+ (void)createNewFeedbackRet:(SuccessBlock)block{
-    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
-    NSString *displayName = [infoDic objectForKey:@"CFBundleDisplayName"];
-    UIDevice *device = [UIDevice currentDevice];
-    NSString *subUUID = [[device.identifierForVendor UUIDString] substringToIndex:6];
-    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"feedback" parameters:@{@"content":displayName,@"contact":subUUID}];
++ (void)createNewFeedbackContent:(NSString *)ctent contact:(NSString *)contact ret:(SuccessBlock)block{
+    NSString *contentStr = ctent;
+    NSString *contactStr = contact;
+    if (contentStr == nil) {//内容默认值
+        NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+        contentStr = [infoDic objectForKey:@"CFBundleDisplayName"];
+    }
+    if (contactStr == nil) {//联系方式默认值
+        UIDevice *device = [UIDevice currentDevice];
+        contactStr = [[device.identifierForVendor UUIDString] substringToIndex:6];
+    }
+    NSMutableURLRequest *request = [self requestWithMethod:@"POST" path:@"feedback" parameters:@{@"content":contentStr,@"contact":contactStr}];
     [self sendRequest:request success:block];
 }
 

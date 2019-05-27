@@ -145,7 +145,7 @@
     self.isUploading = YES;
     NSLog(@"===[EmaxDebug] deviceName: %@",[self getDeviceModel]);
     NSLog(@"===[EmaxDebug] ======== Submit issues ======== \n<\n %@ \n>",self.textView.text);
-    [EMFeedbackManager sendMessage:self.textView.text];
+    [EMFeedbackManager sendMessage:self.textView.text content:self.content contact:self.contact];
     [EMLogManager reportLogResult:^(BOOL isSuccess) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.isUploading = NO;

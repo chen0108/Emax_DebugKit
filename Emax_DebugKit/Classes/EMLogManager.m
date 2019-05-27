@@ -18,6 +18,8 @@
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format {
     NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
     [inputFormatter setDateFormat:format];
+    inputFormatter.lenient = YES;
+    [inputFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
     NSDate *date = [inputFormatter dateFromString:string];
     return date;
 }
@@ -25,7 +27,7 @@
 - (NSString *)stringWithFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
-    [formatter setLocale:[NSLocale currentLocale]];
+    [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US"]];
     return [formatter stringFromDate:self];
 }
 
@@ -99,14 +101,49 @@ static BOOL _enable;
     if (_enable) {
         NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
         [[NSNotificationCenter defaultCenter] removeObserver:self];
-        [self redirectToFile];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(redirectToFile) name:UIApplicationWillEnterForegroundNotification object:nil];
+        [self handleEnterForegroundIfEnableRedirectLog];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleEnterForegroundIfEnableRedirectLog) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
 }
 
 + (BOOL)hasEnableRedirectLog{
     return _enable;
 }
+
++ (void)handleEnterForegroundIfEnableRedirectLog{
+    [self redirectToFile];
+    ///检查是否触发主动上传
+    NSString *uuid = [[[[UIDevice currentDevice].identifierForVendor UUIDString] substringToIndex:6] uppercaseString];
+    NSString *localeIdentifier = [[NSLocale currentLocale].localeIdentifier componentsSeparatedByString:@"@"].firstObject;
+    NSString *urlString = [NSString stringWithFormat:@"https://service-hofwu934-1256637689.gz.apigw.tencentcs.com/test/LogSwitch?uuid=%@&locale=%@",uuid,localeIdentifier];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            NSString *string = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            if (string.integerValue == 1) {
+                //主动上传日志
+                [self reportLogResult:^(BOOL isSuccess) {
+                }];
+            }
+        }
+    }];
+    [dataTask resume];
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{
+    if (![challenge.protectionSpace.authenticationMethod isEqualToString:@"NSURLAuthenticationMethodServerTrust"])
+        return;
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]){
+        NSURLCredential *cre = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        // 调用block
+        completionHandler(NSURLSessionAuthChallengeUseCredential,cre);
+    } else{
+        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
+}
+
 
 static NSUInteger _durationDay;
 + (void)setLogSaveDurationDay:(NSUInteger)day{
