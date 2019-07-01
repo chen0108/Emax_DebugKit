@@ -26,6 +26,10 @@
     [self.listLan addObjectsFromArray:[EMAppLanguage supportLanguageDictionary].allKeys];
 }
 
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

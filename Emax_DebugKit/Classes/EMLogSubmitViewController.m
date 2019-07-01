@@ -118,6 +118,10 @@
 
 }
 
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     /// 开发者的回复

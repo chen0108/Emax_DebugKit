@@ -14,7 +14,6 @@
 
 @interface EMDebugListViewController ()
 
-@property(nonatomic, strong) NSMutableArray *stateArray;
 
 @end
 
@@ -30,12 +29,12 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     //     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"退出" style:UIBarButtonItemStyleDone target:self action:@selector(dismiss)];
-    
-    self.stateArray = [NSMutableArray arrayWithObjects:@"",@"",@"",nil];
-    if ([EMLogManager hasEnableRedirectLog] == NO) {
-        [self.stateArray replaceObjectAtIndex:2 withObject:@"(当前不支持)"];
-    }
 }
+
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+
 
 static NSString *listName[] = {
     @"模式切换",
@@ -69,17 +68,12 @@ static NSString *listClass[] = {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.separatorInset = UIEdgeInsetsZero;
     }
-    NSString *state = self.stateArray[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@. %@ %@",@(indexPath.row+1),listName[indexPath.row],state];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@. %@ ",@(indexPath.row+1),listName[indexPath.row]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSString *state = self.stateArray[indexPath.row];
-    if (state.length > 0) {
-        return;
-    }
     Class vcClass = NSClassFromString(listClass[indexPath.row]);
     UIViewController *vc = [vcClass alloc];
     if ([vc respondsToSelector:@selector(initWithStyle:)]) {

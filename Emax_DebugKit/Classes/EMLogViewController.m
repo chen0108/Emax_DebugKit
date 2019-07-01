@@ -63,6 +63,10 @@
     self.tableView.tableFooterView = [UIView new];
 }
 
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     NSArray *list = [EMLogManager getLogListFile];

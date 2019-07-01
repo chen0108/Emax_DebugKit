@@ -138,6 +138,9 @@ static NSDictionary *_textAtt;
     else{
         [self queryFeedback:_feedbackID success:^(NSDictionary *object) {
             NSString *status = [object objectForKey:@"status"];
+            if (status == nil) {
+                return;
+            }
             if ([status isEqual:@"open"]) {
                 [self createNewMessage:message feedbackID:_feedbackID success:^(NSDictionary *object) {}];
             }else{
@@ -273,7 +276,7 @@ static NewMessageHandler _handler;
 
 + (void)sendRequest:(NSURLRequest *)request success:(SuccessBlock)block{
     NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (response && data && block) {
+        if (response && data && block && error==nil) {
             NSError *error;
             NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             if (error == nil && dictionary) {

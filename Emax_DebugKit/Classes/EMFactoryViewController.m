@@ -50,6 +50,9 @@
     [self.view addSubview:btn];
 }
 
+- (BOOL)shouldAutorotate{
+    return NO;
+}
 
 - (void)btnClick:(UIButton *)btn{
     __weak  typeof(self)this = self;
